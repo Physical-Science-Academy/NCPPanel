@@ -1,0 +1,9 @@
+name: "NCPPanel"
+version: "1.0.0"
+main: net.catrainbow.nocheatplus.gui.NCPPanel
+description: GUI Manager Plugin for NoCheatPlus
+api: [ "1.0.0" ]
+
+depend:
+  - NoCheatPlus
+  - GUI
