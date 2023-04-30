@@ -13,6 +13,7 @@
  */
 package net.catrainbow.nocheatplus.gui;
 
+import cn.nukkit.Server;
 import cn.nukkit.plugin.PluginBase;
 import net.catrainbow.nocheatplus.NoCheatPlus;
 import net.catrainbow.nocheatplus.command.NCPCommand;
@@ -26,6 +27,7 @@ import net.catrainbow.nocheatplus.components.NoCheatPlusAPI;
 public class NCPPanel extends PluginBase {
 
     public static NoCheatPlusAPI provider;
+    public static boolean staticMode = Server.getInstance().getPluginManager().getPlugin("NCPStaticBar") != null;
 
     @Override
     public void onEnable() {
@@ -33,6 +35,7 @@ public class NCPPanel extends PluginBase {
         provider = NoCheatPlus.instance;
         this.getLogger().info("Hook NoCheatPlus successfully!");
         NCPCommand.Companion.getSubCommands().add(new NCPPanelCommand());
+        this.getServer().getCommandMap().register("NCPPanel", new NCPPanelReportCommand());
         this.getLogger().info("NCPPanel Command inject into NCP successfully!");
     }
 }
