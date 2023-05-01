@@ -21,6 +21,8 @@ import net.catrainbow.nocheatplus.gui.NCPPanel;
 import net.catrainbow.nocheatplus.gui.ViolationBuffer;
 import net.catrainbow.nocheatplus.staticbar.NCPStaticAPI;
 
+import java.util.ArrayList;
+
 public class NCPReportTypePanel extends FormSimple {
 
 
@@ -29,12 +31,16 @@ public class NCPReportTypePanel extends FormSimple {
     public NCPReportTypePanel(String name) {
         super(NCPPanel.getInstance().formatLang("report.subtitle"), NCPPanel.getInstance().formatLang("report.subContent"));
         this.name = name;
+        ArrayList<String> list = new ArrayList<>();
         for (CheckType type : CheckType.values())
             if (type.isUsedCheck()) {
                 String typeName = type.name();
                 for (String translateGen : NCPPanel.getInstance().getConfig().getStringList("language.report.typeTranslate"))
                     typeName = typeName.replaceAll(translateGen.split(":")[0], translateGen.split(":")[1]);
-                addButton(typeName);
+                if (!list.contains(typeName)) {
+                    addButton(typeName);
+                    list.add(typeName);
+                }
             }
     }
 
