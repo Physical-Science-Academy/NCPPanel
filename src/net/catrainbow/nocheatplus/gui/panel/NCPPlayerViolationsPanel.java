@@ -37,18 +37,18 @@ public class NCPPlayerViolationsPanel extends FormSimple {
         Player target = Server.getInstance().getPlayer(name);
         switch (id) {
             case 0:
-                player.sendMessage(NCPPanel.getInstance().formatLang("violation.kick"));
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.kick").replace("@player", target.getName()));
                 NCPPanel.provider.kickPlayer(target, CheckType.STAFF);
                 break;
             case 1:
-                player.sendMessage(NCPPanel.getInstance().formatLang("violation.ban"));
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.ban").replace("@player", target.getName()));
                 int days = NCPPanel.getInstance().getConfig().getInt("punishment.days");
                 int hours = NCPPanel.getInstance().getConfig().getInt("punishment.hours");
                 int minute = NCPPanel.getInstance().getConfig().getInt("punishment.minutes");
                 NCPPanel.provider.banPlayer(target, days, hours, minute);
                 break;
             case 2:
-                player.sendMessage(NCPPanel.getInstance().formatLang("violation.teleport"));
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.teleport").replace("@player", target.getName()));
                 player.teleport(target);
                 break;
         }

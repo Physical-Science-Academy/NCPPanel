@@ -32,7 +32,7 @@ public class NCPReportTypePanel extends FormSimple {
         for (CheckType type : CheckType.values())
             if (type.isUsedCheck()) {
                 String typeName = type.name();
-                for (String translateGen : NCPPanel.getInstance().getConfig().getStringList("report.typeTranslate"))
+                for (String translateGen : NCPPanel.getInstance().getConfig().getStringList("language.report.typeTranslate"))
                     typeName = typeName.replaceAll(translateGen.split(":")[0], translateGen.split(":")[1]);
                 addButton(typeName);
             }

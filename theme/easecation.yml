@@ -1,0 +1,85 @@
+#自定义协管面板命令
+panelCommand: admin
+
+#自定义举报命令
+reportCommand: r
+
+#可疑玩家面板最大数量
+maxBuffers: 20
+
+#是否自动清除在可疑玩家面板中过时的报告
+autoDelete: true
+
+#每间隔几秒更新一次可疑玩家面板
+scanTick: 10
+
+#每间隔几分钟扫描并删除一次在高位面板中的过时报告
+scanMinute: 2
+
+#高危面板中显示的类型
+reportInfo: §a玩家举报§r
+autoCheckInfo: §bNCP自动检测§r
+
+#是否开启协管频道并定时通知它们NCP最近自动收集到的可疑玩家
+staffBroadcast: true
+#每间隔多少秒通知一次
+staffBroadcastTick: 200
+staffBroadcastMessage: §eNCP反作弊系统>> 在最近的几分钟内NCP共收集到了@size条作弊警告信息,请输入/ncp admin打开面板查看!
+
+#面板封禁的时长设定
+punishment:
+  days: 3
+  hours: 0
+  minutes: 0
+
+#设置一个标准去衡量高危玩家和低危玩家
+violations:
+  high: 20.0
+  low: 15.0
+violation:
+  highTitle: §c高危§r
+
+#自定义语言文件
+language:
+  base:
+    suspicious: NCP记录查看器
+    modules: NCP模块管理器
+    violations: §a§l选择目标玩家
+  module:
+    title: NCP模块管理
+    content: 点击查看模块详细说明
+    info: 模块名字:@name@next模块作者:@author@next模块版本:@version
+    buttonEnable: §a开启
+    buttonDisable: §c关闭
+    enable: '§b[NCPPanel] §d@module 现在已经被开启了'
+    disable: §b[NCPPanel] §d@module 现在已经被关闭了'
+  violation:
+    title: NCP管理面板 - 选择玩家
+    content: 点击对应玩家查看详细内容和进行对应操作
+    subtitle: '§d@player的信息和处理'
+    subContent: ''
+    kickButton: §c踢出
+    banButton: §c封禁
+    teleportButton: §a传送过去
+    kick: §b[NCPPanel] §d踢出 @player 成功!
+    ban: §b[NCPPanel] §d封禁 @player 成功!
+    teleport: §b[NCPPanel] §d传送 @player 成功!
+  report:
+    title: §b举报作弊玩家
+    content: §e请选择你要举报的玩家
+    subtitle: §d请选择举报原因
+    subContent: '§e请选择举报原因,我们将会让NCP反作弊持续监督该玩家并通知协管前来处理!'
+    #将举报面板中的原因进行汉化
+    typeTranslate:
+    - MOVING_SURVIVAL_FLY:飞行
+    - UNKNOWN_PACKET:使用第三方软件
+    - MOVING_CREATIVE_FLY:飞行
+    - MOVING_SPEED:飞行
+    - MOVING_VEHICLE:载具飞行
+    - MOVING_MORE_PACKETS:变速齿轮
+    - FIGHT_SPEED:连点器
+    feedback: §e你举报了玩家 §b@hack §e因为§a[@reason]§e,感谢你的举报,我们将会让NCP反作弊持续监督该玩家并通知协管前来处理!
+  suspicious:
+    title: NCP记录查看器
+    content: NCP已向你展示最近几分钟内记录的作弊警告!点击即可跳转对应玩家详细信息和处理界面
+    button: §8-@ticks@level §r§8@player@next§8类型:@reason 信息:@info

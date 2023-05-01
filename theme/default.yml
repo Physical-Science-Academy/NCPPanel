@@ -1,0 +1,78 @@
+#panel command
+panelCommand: panel
+
+#report command
+reportCommand: report
+
+#max counts of button in Suspicious Panel
+maxBuffers: 20
+
+#enable auto delete
+autoDelete: true
+
+#secons between each check to update Suspicious Panel
+scanTick: 10
+
+#minutes between each check to remove old report in Suspicious Panel
+scanMinute: 2
+
+#What will show on button in Suspicious
+reportInfo: Player Report
+autoCheckInfo: NCP Check
+
+#enable NCP to tell op or admin how many suspicious players are in recent moments
+staffBroadcast: true
+#seconds between each broadcast
+staffBroadcastTick: 200
+staffBroadcastMessage: NCP has collected @size suspicious players in recent minute. Please open panel to check them.
+
+#how long a player will be banned by admin or op through NCP Panel
+punishment:
+  days: 3
+  hours: 0
+  minutes: 0
+
+#set a standard to make NCP check player and put them into suspicious panel
+violations:
+  high: 20.0
+  low: 15.0
+violation:
+  highTitle: Danger
+
+#language 
+language:
+  base:
+    suspicious: Suspicious Player
+    modules: Modules
+    violations: Violations
+  module:
+    title: NCP Modules
+    content: Switch to see the module's info
+    info: Module Name:@name@nextAuthor:@author@nextVersion:@version
+    buttonEnable: Enable
+    buttonDisable: Disable
+    enable: '@module now is enabled'
+    disable: '@module now is disabled'
+  violation:
+    title: Violations
+    content: Switch to see player's violation
+    subtitle: '@player''s violations'
+    subContent: ''
+    kickButton: Kick
+    banButton: Ban
+    teleportButton: Teleport
+    kick: Kick @player successfully!
+    ban: Ban @player successfully!
+    teleport: Teleport you to @player Successfully!
+  report:
+    title: Report
+    content: Switch to report a hacking player
+    subtitle: chose a reason
+    subContent: ''
+    typeTranslate:
+    - MOVING_SURVIVAL_FLY:Fly
+    feedback: Thanks for reporting! We will detect the player if he is a hacker. @hack @reason
+  suspicious:
+    title: Suspicious Player
+    content: NCP will show you recent player who are seemed to be hack
+    button: §8@tick before @level §r@player@next§8Type:@reason Info:@info
