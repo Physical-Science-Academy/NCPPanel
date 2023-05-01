@@ -16,6 +16,7 @@ package net.catrainbow.nocheatplus.gui;
 import cn.nukkit.Player;
 import cn.nukkit.scheduler.Task;
 import net.catrainbow.nocheatplus.checks.CheckType;
+import net.catrainbow.nocheatplus.gui.event.NCPanelEvent;
 
 public class NCPPanelTask extends Task {
     @Override
@@ -40,7 +41,10 @@ public class NCPPanelTask extends Task {
                         violationBuffer.info = NCPPanel.getInstance().getConfig().getString("autoCheckInfo");
                         if (vl > NCPPanel.getInstance().getConfig().getDouble("violations.high"))
                             violationBuffer.level = NCPPanel.getInstance().getConfig().getString("violation.highTitle");
-                        ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
+                        NCPanelEvent event = new NCPanelEvent(violationBuffer);
+                        NCPPanel.getInstance().getServer().getPluginManager().callEvent(event);
+                        if (!event.isCancelled())
+                            ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
                     }
                 }
         }

@@ -19,6 +19,7 @@ import moe.him188.gui.window.FormSimple;
 import net.catrainbow.nocheatplus.checks.CheckType;
 import net.catrainbow.nocheatplus.gui.NCPPanel;
 import net.catrainbow.nocheatplus.gui.ViolationBuffer;
+import net.catrainbow.nocheatplus.gui.event.NCPanelEvent;
 import net.catrainbow.nocheatplus.staticbar.NCPStaticAPI;
 
 import java.util.ArrayList;
@@ -52,7 +53,10 @@ public class NCPReportTypePanel extends FormSimple {
         violationBuffer.playerName = target.getName();
         violationBuffer.type = typeName;
         violationBuffer.info = NCPPanel.getInstance().getConfig().getString("reportInfo");
-        ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
+        NCPanelEvent event = new NCPanelEvent(violationBuffer);
+        NCPPanel.getInstance().getServer().getPluginManager().callEvent(event);
+        if (!event.isCancelled())
+            ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
         player.sendMessage(NCPPanel.getInstance().formatLang("report.feedback").replace("@hack", target.getName()).replace("@reason", typeName));
         if (NCPPanel.staticMode) {
             NCPStaticAPI.setPlayerCheckable(player);
