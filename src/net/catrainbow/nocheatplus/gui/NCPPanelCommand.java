@@ -28,13 +28,14 @@ import org.jetbrains.annotations.NotNull;
 public class NCPPanelCommand extends NCPSubCommand {
 
     public NCPPanelCommand() {
-        super("panel");
+        super(NCPPanel.getInstance().getConfig().getString("panelCommand"));
     }
 
     @Override
     public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
         if (commandSender instanceof Player) {
-            if (commandSender.isOp()) ((Player) commandSender).showFormWindow(new NCPBasePanel());
+            if (commandSender.isOp() || NCPPanel.provider.hasPermission((Player) commandSender, ""))
+                ((Player) commandSender).showFormWindow(new NCPBasePanel());
 
         }
         return true;
@@ -43,7 +44,7 @@ public class NCPPanelCommand extends NCPSubCommand {
     @NotNull
     @Override
     public String[] getAliases() {
-        return new String[]{"admin", "manager"};
+        return new String[]{};
     }
 
     @NotNull

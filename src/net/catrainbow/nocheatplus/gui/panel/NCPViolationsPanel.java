@@ -16,11 +16,12 @@ package net.catrainbow.nocheatplus.gui.panel;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import moe.him188.gui.window.FormSimple;
+import net.catrainbow.nocheatplus.gui.NCPPanel;
 
 public class NCPViolationsPanel extends FormSimple {
 
     public NCPViolationsPanel() {
-        super("Violations", "Switch to see player's violation");
+        super(NCPPanel.getInstance().formatLang("violation.title"), NCPPanel.getInstance().formatLang("violation.content"));
         for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             this.addButton(player.getName());
         }

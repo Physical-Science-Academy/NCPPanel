@@ -16,12 +16,13 @@ package net.catrainbow.nocheatplus.gui.panel;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import moe.him188.gui.window.FormSimple;
+import net.catrainbow.nocheatplus.gui.NCPPanel;
 
 public class NCPReportPanel extends FormSimple {
 
 
     public NCPReportPanel() {
-        super("Report", "Switch to report a hacking player");
+        super(NCPPanel.getInstance().formatLang("report.title"), NCPPanel.getInstance().formatLang("report.content"));
         for (Player player : Server.getInstance().getOnlinePlayers().values()) {
             this.addButton(player.getName());
         }

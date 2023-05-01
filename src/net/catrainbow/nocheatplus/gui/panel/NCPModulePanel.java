@@ -21,7 +21,7 @@ import net.catrainbow.nocheatplus.gui.NCPPanel;
 public class NCPModulePanel extends FormSimple {
 
     public NCPModulePanel() {
-        super("NCP Modules", "Switch to see the module's info");
+        super(NCPPanel.getInstance().formatLang("module.title"), NCPPanel.getInstance().formatLang("module.content"));
         for (NCPComponent component : NCPPanel.provider.getAllComponents().values()) {
             this.addButton(component.getRegisterCom().getName());
         }

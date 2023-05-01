@@ -16,22 +16,27 @@ package net.catrainbow.nocheatplus.gui.panel;
 import cn.nukkit.Player;
 import cn.nukkit.form.element.ElementButton;
 import moe.him188.gui.window.FormSimple;
+import net.catrainbow.nocheatplus.gui.NCPPanel;
 
 public class NCPBasePanel extends FormSimple {
 
     public NCPBasePanel() {
         super("NoCheatPlus Manager", "Switch button to continue.");
-        this.addButton(new ElementButton("Modules"));
-        this.addButton(new ElementButton("Violations"));
+        this.addButton(new ElementButton(NCPPanel.getInstance().formatLang("base.suspicious")));
+        this.addButton(new ElementButton(NCPPanel.getInstance().formatLang("base.modules")));
+        this.addButton(new ElementButton(NCPPanel.getInstance().formatLang("base.violations")));
     }
 
     @Override
     public void onClicked(int id, Player player) {
         switch (id) {
             case 0:
-                player.showFormWindow(new NCPModulePanel());
+                player.showFormWindow(new NCPSuspiciousPanel());
                 break;
             case 1:
+                player.showFormWindow(new NCPModulePanel());
+                break;
+            case 2:
                 player.showFormWindow(new NCPViolationsPanel());
                 break;
             default:

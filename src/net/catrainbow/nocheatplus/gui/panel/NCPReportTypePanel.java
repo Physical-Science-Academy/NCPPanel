@@ -27,10 +27,15 @@ public class NCPReportTypePanel extends FormSimple {
     private final String name;
 
     public NCPReportTypePanel(String name) {
-        super(name + " hacking action", "");
+        super(NCPPanel.getInstance().formatLang("report.subtitle"), NCPPanel.getInstance().formatLang("report.subContent"));
         this.name = name;
         for (CheckType type : CheckType.values())
-            if (type.isUsedCheck()) addButton(type.name());
+            if (type.isUsedCheck()) {
+                String typeName = type.name();
+                for (String translateGen : NCPPanel.getInstance().getConfig().getStringList("report.typeTranslate"))
+                    typeName = typeName.replaceAll(translateGen.split(":")[0], translateGen.split(":")[1]);
+                addButton(typeName);
+            }
     }
 
     @Override
@@ -40,8 +45,9 @@ public class NCPReportTypePanel extends FormSimple {
         ViolationBuffer violationBuffer = new ViolationBuffer();
         violationBuffer.playerName = target.getName();
         violationBuffer.type = typeName;
+        violationBuffer.info = NCPPanel.getInstance().getConfig().getString("reportInfo");
         ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
-        player.sendMessage("Thanks for reporting! We will detect the player if he is a hacker.");
+        player.sendMessage(NCPPanel.getInstance().formatLang("report.feedback").replace("@hack", target.getName()).replace("@reason", typeName));
         if (NCPPanel.staticMode) {
             NCPStaticAPI.setPlayerCheckable(player);
         }

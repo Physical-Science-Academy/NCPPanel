@@ -27,7 +27,7 @@ import net.catrainbow.nocheatplus.gui.panel.NCPReportPanel;
 public class NCPPanelReportCommand extends Command {
 
     public NCPPanelReportCommand() {
-        super("report", "NCP Report Command");
+        super(NCPPanel.getInstance().getConfig().getString("reportCommand"), "NCP Report Command");
     }
 
     @Override

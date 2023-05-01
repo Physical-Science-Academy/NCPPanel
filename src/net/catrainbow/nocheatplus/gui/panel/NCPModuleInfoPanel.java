@@ -16,26 +16,27 @@ package net.catrainbow.nocheatplus.gui.panel;
 import cn.nukkit.Player;
 import moe.him188.gui.window.FormSimple;
 import net.catrainbow.nocheatplus.components.registry.NCPComponent;
+import net.catrainbow.nocheatplus.gui.NCPPanel;
 
 public class NCPModuleInfoPanel extends FormSimple {
 
     private final NCPComponent component;
 
     public NCPModuleInfoPanel(NCPComponent component) {
-        super(component.getRegisterCom().getName(), "Module Name: " + component.getRegisterCom().getName() + "\nModule Author: " + component.getRegisterCom().getAuthor() + "\nModule Version: " + component.getRegisterCom().getVersion());
+        super(component.getRegisterCom().getName(), NCPPanel.getInstance().formatLang("module.info").replace("@next", "\n").replace("@name", component.getRegisterCom().getName()).replace("@author", component.getRegisterCom().getAuthor()).replace("@version", component.getRegisterCom().getVersion()));
         this.component = component;
-        this.addButton("Enabled");
-        this.addButton("Disabled");
+        this.addButton(NCPPanel.getInstance().formatLang("module.buttonEnable"));
+        this.addButton(NCPPanel.getInstance().formatLang("module.buttonDisable"));
     }
 
     @Override
     public void onClicked(int id, Player player) {
         if (id == 0) {
             this.component.onEnabled();
-            player.sendMessage("Module " + component.getRegisterCom().getName() + " now is enabled");
+            player.sendMessage(NCPPanel.getInstance().formatLang("module.enable").replace("@module", component.getRegisterCom().getName()));
         } else {
             this.component.onDisabled();
-            player.sendMessage("Module " + component.getRegisterCom().getName() + " now is disabled");
+            player.sendMessage(NCPPanel.getInstance().formatLang("module.disable").replace("@module", component.getRegisterCom().getName()));
         }
     }
 }

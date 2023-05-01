@@ -23,4 +23,6 @@ public class ViolationBuffer {
     public String type;
     public String info = "";
 
+    public String level = "";
+
 }

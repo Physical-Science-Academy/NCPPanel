@@ -25,11 +25,11 @@ public class NCPPlayerViolationsPanel extends FormSimple {
     private final String name;
 
     public NCPPlayerViolationsPanel(String name) {
-        super(name + "'s violations", "");
+        super(NCPPanel.getInstance().formatLang("violation.subtitle").replace("@player", name), NCPPanel.getInstance().formatLang("violation.subContent"));
         this.name = name;
-        this.addButton("Kick");
-        this.addButton("Banned");
-        this.addButton("Teleport");
+        this.addButton(NCPPanel.getInstance().formatLang("violation.kickButton"));
+        this.addButton(NCPPanel.getInstance().formatLang("violation.banButton"));
+        this.addButton(NCPPanel.getInstance().formatLang("violation.teleportButton"));
     }
 
     @Override
@@ -37,15 +37,18 @@ public class NCPPlayerViolationsPanel extends FormSimple {
         Player target = Server.getInstance().getPlayer(name);
         switch (id) {
             case 0:
-                player.sendMessage("kicked the player successfully!");
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.kick"));
                 NCPPanel.provider.kickPlayer(target, CheckType.STAFF);
                 break;
             case 1:
-                player.sendMessage("Banned the player for 3 days successfully!");
-                NCPPanel.provider.banPlayer(target, 3, 0, 0);
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.ban"));
+                int days = NCPPanel.getInstance().getConfig().getInt("punishment.days");
+                int hours = NCPPanel.getInstance().getConfig().getInt("punishment.hours");
+                int minute = NCPPanel.getInstance().getConfig().getInt("punishment.minutes");
+                NCPPanel.provider.banPlayer(target, days, hours, minute);
                 break;
             case 2:
-                player.sendMessage("teleport to the player successfully!");
+                player.sendMessage(NCPPanel.getInstance().formatLang("violation.teleport"));
                 player.teleport(target);
                 break;
         }
