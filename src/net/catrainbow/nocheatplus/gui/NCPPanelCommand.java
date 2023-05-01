@@ -44,7 +44,7 @@ public class NCPPanelCommand extends NCPSubCommand {
     @NotNull
     @Override
     public String[] getAliases() {
-        return new String[]{};
+        return new String[]{this.getSubCommandStr()};
     }
 
     @NotNull

@@ -43,5 +43,8 @@ public class NCPSuspiciousPanel extends FormSimple {
     public void onClicked(int id, Player player) {
         ViolationBuffer buffer = list.get(id);
         player.showFormWindow(new NCPPlayerViolationsPanel(buffer.playerName));
+        for (Long sinceTimeMillis : ViolationBuffer.violationBuffers.keySet())
+            if (ViolationBuffer.violationBuffers.get(sinceTimeMillis).playerName.equals(buffer.playerName))
+                ViolationBuffer.violationBuffers.remove(sinceTimeMillis);
     }
 }
