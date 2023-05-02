@@ -76,8 +76,14 @@
 
         <dependency>
             <groupId>com.github.Physical-Science-Academy.NoCheatPlus</groupId>
-            <artifactId>CompatNCP</artifactId>
-            <version>maven-repo-20220552-3a</version>
+            <artifactId>NoCheatPlus</artifactId>
+            <version>maven-repo-20220552-4a</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.Physical-Science-Academy.NoCheatPlus</groupId>
+            <artifactId>NCPStaticBar</artifactId>
+            <version>maven-repo-20220552-4a</version>
         </dependency>
 
     </dependencies>
