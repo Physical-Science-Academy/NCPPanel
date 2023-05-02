@@ -38,6 +38,10 @@
             <name>Opencollab Repository</name>
             <url>https://repo.opencollab.dev/maven-releases</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -48,27 +52,17 @@
         </dependency>
 
         <dependency>
-            <groupId>net.catrainbow.nocheatplus</groupId>
-            <artifactId>NoCheatPlus</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/dell/Desktop/FAP 3/plugins/NoCheatPlus-1.0.0-jar-with-dependencies.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>net.catrainbow.nocheatplus</groupId>
-            <artifactId>NCPStaticBar</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/dell/Desktop/FAP 3/plugins/NCPStaticBar-1.0.0.jar</systemPath>
-        </dependency>
-
-        <dependency>
             <groupId>mm.him188</groupId>
             <artifactId>GUI</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>C:/Users/dell/Desktop/WatchDogProject/gui.jar</systemPath>
+            <systemPath>${basedir}/libs/gui.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.Physical-Science-Academy.NoCheatPlus</groupId>
+            <artifactId>CompatNCP</artifactId>
+            <version>maven-repo-20220552-3a</version>
         </dependency>
 
     </dependencies>
