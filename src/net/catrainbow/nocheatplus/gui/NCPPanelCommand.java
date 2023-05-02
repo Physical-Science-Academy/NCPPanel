@@ -34,7 +34,7 @@ public class NCPPanelCommand extends NCPSubCommand {
     @Override
     public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
         if (commandSender instanceof Player) {
-            if (commandSender.isOp() || NCPPanel.provider.hasPermission((Player) commandSender, ""))
+            if (commandSender.isOp() || NCPPanel.provider.hasPermission((Player) commandSender, this.getSubCommandStr()))
                 ((Player) commandSender).showFormWindow(new NCPBasePanel());
 
         }

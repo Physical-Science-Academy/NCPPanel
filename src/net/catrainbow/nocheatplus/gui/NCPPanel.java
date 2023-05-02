@@ -21,6 +21,7 @@ import cn.nukkit.utils.Config;
 import net.catrainbow.nocheatplus.NoCheatPlus;
 import net.catrainbow.nocheatplus.command.NCPCommand;
 import net.catrainbow.nocheatplus.components.NoCheatPlusAPI;
+import net.catrainbow.nocheatplus.gui.helper.HelperPanelCommand;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,8 @@ public class NCPPanel extends PluginBase {
                 }
             }, this.getConfig().getInt("staffBroadcastTick") * 20);
         }
+        if (this.getConfig().getBoolean("helper.enabled"))
+            this.getServer().getCommandMap().register("NCPPanel", new HelperPanelCommand());
     }
 
     public String formatLang(String path) {
@@ -128,6 +131,8 @@ public class NCPPanel extends PluginBase {
             config.set("language.suspicious.title", "Suspicious Player");
             config.set("language.suspicious.content", "NCP will show you recent player who are seemed to be hack");
             config.set("language.suspicious.button", "§8@tick before @level §r@player@next§8Type:@reason Info:@info");
+            config.set("helper.enabled", false);
+            config.set("helper.list", new ArrayList<>());
             config.save(true);
         }
     }
