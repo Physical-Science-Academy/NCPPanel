@@ -56,7 +56,7 @@ public class NCPReportTypePanel extends FormSimple {
         NCPanelEvent event = new NCPanelEvent(violationBuffer);
         NCPPanel.getInstance().getServer().getPluginManager().callEvent(event);
         if (!event.isCancelled())
-            ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
+            ViolationBuffer.addViolationBuffer(violationBuffer);
         player.sendMessage(NCPPanel.getInstance().formatLang("report.feedback").replace("@hack", target.getName()).replace("@reason", typeName));
         if (NCPPanel.staticMode) {
             NCPStaticAPI.setPlayerCheckable(player);

@@ -35,7 +35,7 @@ public class NCPSuspiciousPanel extends FormSimple {
             int diff = (int) ((System.currentTimeMillis() - sinceTimeMillis) / 1000L);
             ViolationBuffer buffer = ViolationBuffer.violationBuffers.get(sinceTimeMillis);
             list.add(buffer);
-            this.addButton(NCPPanel.getInstance().formatLang("suspicious.button").replace("@tick", String.valueOf(diff)).replace("@level", buffer.level).replace("@player", buffer.playerName).replace("@next", "\n").replace("@reason", buffer.type).replace("@info", buffer.info));
+            this.addButton(NCPPanel.getInstance().formatLang("suspicious.button").replace("@tick", String.valueOf(diff)).replace("@level", buffer.level).replace("@player", buffer.playerName).replace("@next", "\n").replace("@reason", buffer.type).replace("@info", buffer.info).replace("@count", buffer.tick > 1 ? String.valueOf(buffer.tick) : ""));
         }
     }
 

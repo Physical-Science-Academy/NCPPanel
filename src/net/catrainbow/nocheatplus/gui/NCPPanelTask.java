@@ -25,9 +25,14 @@ public class NCPPanelTask extends Task {
             if (NCPPanel.getInstance().getConfig().getBoolean("autoDelete")) ViolationBuffer.violationBuffers.clear();
         }
         if (NCPPanel.getInstance().getConfig().getBoolean("autoDelete")) {
-            for (Long timeMill : ViolationBuffer.violationBuffers.keySet()) {
-                if (System.currentTimeMillis() - timeMill > NCPPanel.getInstance().getConfig().getInt("scanMinute") * 60 * 1000L)
-                    ViolationBuffer.violationBuffers.remove(timeMill);
+            //unsafe problem
+            try {
+                for (Long timeMill : ViolationBuffer.violationBuffers.keySet()) {
+                    if (System.currentTimeMillis() - timeMill > NCPPanel.getInstance().getConfig().getInt("scanMinute") * 60 * 1000L)
+                        ViolationBuffer.violationBuffers.remove(timeMill);
+                }
+            } catch (Exception ignore) {
+
             }
         }
         for (Player player : NCPPanel.getInstance().getServer().getOnlinePlayers().values()) {
@@ -44,7 +49,7 @@ public class NCPPanelTask extends Task {
                         NCPanelEvent event = new NCPanelEvent(violationBuffer);
                         NCPPanel.getInstance().getServer().getPluginManager().callEvent(event);
                         if (!event.isCancelled())
-                            ViolationBuffer.violationBuffers.put(System.currentTimeMillis(), violationBuffer);
+                            ViolationBuffer.addViolationBuffer(violationBuffer);
                     }
                 }
         }

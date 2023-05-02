@@ -130,7 +130,7 @@ public class NCPPanel extends PluginBase {
             config.set("language.report.feedback", "Thanks for reporting! We will detect the player if he is a hacker. @hack @reason");
             config.set("language.suspicious.title", "Suspicious Player");
             config.set("language.suspicious.content", "NCP will show you recent player who are seemed to be hack");
-            config.set("language.suspicious.button", "§8@tick before @level §r@player@next§8Type:@reason Info:@info");
+            config.set("language.suspicious.button", "§8@tick before [@count]@level §r@player@next§8Type:@reason Info:@info");
             config.set("helper.enabled", false);
             config.set("helper.list", new ArrayList<>());
             config.save(true);

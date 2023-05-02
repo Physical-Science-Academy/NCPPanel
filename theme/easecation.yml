@@ -82,7 +82,7 @@ language:
   suspicious:
     title: NCP记录查看器
     content: NCP已向你展示最近几分钟内记录的作弊警告!点击即可跳转对应玩家详细信息和处理界面
-    button: §8-@ticks@level §r§8@player@next§8类型:@reason 信息:@info
+    button: §8-@ticks[@count]@level §r§8@player@next§8类型:@reason 信息:@info
 
 #协管玩家配置(除op外可以使用面板的玩家)
 helper:

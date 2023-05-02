@@ -75,7 +75,7 @@ language:
   suspicious:
     title: Suspicious Player
     content: NCP will show you recent player who are seemed to be hack
-    button: §8@tick before @level §r@player@next§8Type:@reason Info:@info
+    button: §8@tick before [@count]@level §r@player@next§8Type:@reason Info:@info
 
 # Staff List(player who can use admin command)
 helper:
