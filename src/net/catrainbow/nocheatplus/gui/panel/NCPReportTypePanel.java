@@ -59,7 +59,7 @@ public class NCPReportTypePanel extends FormSimple {
             ViolationBuffer.addViolationBuffer(violationBuffer);
         player.sendMessage(NCPPanel.getInstance().formatLang("report.feedback").replace("@hack", target.getName()).replace("@reason", typeName));
         if (NCPPanel.staticMode) {
-            NCPStaticAPI.setPlayerCheckable(player);
+            NCPStaticAPI.setPlayerCheckable(target);
         }
     }
 
